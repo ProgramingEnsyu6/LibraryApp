@@ -20,12 +20,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class AsyncJsonLoader extends AsyncTask<Void, Void, JSONArray> {
+public class AsyncJsonLoader extends AsyncTask<String, Void, JSONArray> {
     private Activity mainActivity;
     private Listener listener;
 
@@ -39,14 +40,14 @@ public class AsyncJsonLoader extends AsyncTask<Void, Void, JSONArray> {
     }
 
     @Override
-    protected  JSONArray doInBackground(Void... strings) {
+    protected  JSONArray doInBackground(String... strings) {
         HttpsURLConnection con = null;
         URL url  = null;
         String urlSt = "https://afternoon-ridge-19723.herokuapp.com/api/v1/books";
 
         try{
             // URLを作成
-            url = new URL(urlSt);
+            url = new URL(urlSt + strings[0]);
             // 接続用オブジェクトを作成
             con = (HttpsURLConnection)url.openConnection();
             // リクエストメッセージの設定
@@ -62,13 +63,11 @@ public class AsyncJsonLoader extends AsyncTask<Void, Void, JSONArray> {
 
                 InputStream in = con.getInputStream();
                 String readSt = readInputStream(in);
-                //String st = "";
 
                 JSONArray jsonArray = new JSONArray(readSt);
 
                 return jsonArray;
             }
-
         }catch (JSONException e){
             e.printStackTrace();
         }catch(MalformedURLException e){
@@ -103,21 +102,6 @@ public class AsyncJsonLoader extends AsyncTask<Void, Void, JSONArray> {
         super.onPostExecute(jsonArray);
 
         if(listener != null){
-            /*String st = "";
-
-            try {
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    if (jsonObject.has("title")) {
-                        if (!jsonObject.isNull("title")) {
-                            st += jsonObject.getString("title");
-                        }
-                    }
-                }
-            }catch (JSONException e){
-                e.printStackTrace();
-            }*/
-
             listener.onSuccess(jsonArray);
         }
     }

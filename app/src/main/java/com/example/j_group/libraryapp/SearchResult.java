@@ -26,5 +26,30 @@ public class SearchResult extends AppCompatActivity {
                 dialogFragment.show(manager, "dialog");
             }
         });
+
+        /*
+        * 以下のコメントを外すと前の画面から本の情報を受け取れる
+        *  infoArrayのindexは、
+        * 0: タイトル
+        * 1: 著者
+        * 2: 製造日
+        * 3: ジャンル
+        * 4: C_code
+        *  に応じた情報が入っている
+        * */
+
+        // 現在のintentを取得する
+        //Intent intent = getIntent();
+        // intentから指定キーの文字列を取得する
+        //ArrayList<String> infoArray = intent.getStringArrayListExtra("info");
+
+        /*
+        * TextViewへの文字列の動的代入
+        * 下に例を書いとくんで他の情報追加もこんな感じでお願いします
+        * */
+        // TextView title = findViewById(R.id.title);
+        // title.setText(infoArray[0);
     }
+
+
 }
