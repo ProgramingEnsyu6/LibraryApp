@@ -34,17 +34,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*  AsyncJsonLoader asyncJsonLoader = new AsyncJsonLoader(thisActivity);
-        asyncJsonLoader.setListener(createListener());
-        asyncJsonLoader.execute();                 */
-    /* 使用するActivity内で記述することで利用可能 */
-    private AsyncJsonLoader.Listener createListener(){
-        return new AsyncJsonLoader.Listener() {
-            @Override
-            public void onSuccess(JSONArray jsonArray) {
-
-            }
-        };
-    }
-
 }
