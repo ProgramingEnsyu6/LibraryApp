@@ -137,7 +137,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/Publisher"
+                android:id="@+id/c_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
@@ -147,12 +147,12 @@
                 android:background="@color/dark_back"
                 android:gravity="start"
                 android:padding="2dp"
-                android:text="@string/publisher"
+                android:text="@string/C_code"
                 android:textColor="@color/text"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/Publisher_name"
+                android:id="@+id/c_code_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -161,7 +161,7 @@
                 android:background="@color/light_back"
                 android:gravity="start"
                 android:padding="2dp"
-                android:text="@string/publisher_con"
+                android:text="@string/C_code_data"
                 android:textColor="@color/text"
                 android:textSize="18sp" />
         </TableRow>
