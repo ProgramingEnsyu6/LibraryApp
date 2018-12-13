@@ -198,21 +198,21 @@ public class SearchScreen extends AppCompatActivity implements SearchView.OnQuer
                     asyncJsonLoader.execute(params);
                 } else if (checkedId == R.id.radioButton2) {
                     //タイトル検索
-                    params = "?title= queryText";
+                    params = "?title= " + queryText;
                     thisActivity = this;
                     AsyncJsonLoader asyncJsonLoader = new AsyncJsonLoader(thisActivity);
                     asyncJsonLoader.setListener(createListener());
                     asyncJsonLoader.execute(params);
                 } else if (checkedId == R.id.radioButton3) {
                     //著者検索
-                    params = "?author= queryText";
+                    params = "?author= " + queryText;
                     thisActivity = this;
                     AsyncJsonLoader asyncJsonLoader = new AsyncJsonLoader(thisActivity);
                     asyncJsonLoader.setListener(createListener());
                     asyncJsonLoader.execute(params);
                 } else if (checkedId == R.id.radioButton4) {
                     //ジャンル検索
-                    params = "?genre= queryText";
+                    params = "?genre= " + queryText;
                     thisActivity = this;
                     AsyncJsonLoader asyncJsonLoader = new AsyncJsonLoader(thisActivity);
                     asyncJsonLoader.setListener(createListener());
