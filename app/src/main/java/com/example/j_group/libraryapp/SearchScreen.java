@@ -66,8 +66,8 @@ public class SearchScreen extends AppCompatActivity implements SearchView.OnQuer
         * を検索条件に合わせて代入する
         * */
         // params = ""
-        // thisActivity = this;
-        // AsyncJsonLoader asyncJsonLoader = new AsyncJsonLoader(thisActivity,params);
+        thisActivity = this;
+        AsyncJsonLoader asyncJsonLoader = new AsyncJsonLoader(thisActivity);
         // asyncJsonLoader.setListener(createListener());
         // asyncJsonLoader.execute();
 
