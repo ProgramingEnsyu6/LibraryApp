@@ -73,8 +73,8 @@ public class SearchScreen extends AppCompatActivity implements SearchView.OnQuer
                  *
                  * */
                 // 本の情報を追加する処理
-                // ArrayList<String> infoArray = new ArrayList();
-                // infoArray.add("");
+                //ArrayList<String> infoArray = new ArrayList();
+                //infoArray.add("");
                 // infoArray.add("著者");
                 // infoArray.add("発行日");
                 // infoArray.add("ジャンル");
@@ -104,50 +104,52 @@ public class SearchScreen extends AppCompatActivity implements SearchView.OnQuer
 
                 final List<Map<String, String>> book = new ArrayList<>();
                 try {
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        Map<String, String> map = new HashMap<>();
-                        if (jsonObject.has("title")) {
-                            if (!jsonObject.isNull("title")) {
-                                String st = jsonObject.getString("title");
-                                // stをListViewに追加する
-                                map.put("title", st);
-                            }
+                    if(jsonArray != null) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            Map<String, String> map = new HashMap<>();
+                            if (jsonObject.has("title")) {
+                                if (!jsonObject.isNull("title")) {
+                                    String st = jsonObject.getString("title");
+                                    // タイトルを追加
+                                    map.put("title", st);
+                                }
 
-                        }
-                        if (jsonObject.has("author")) {
-                            if (!jsonObject.isNull("author")) {
-                                String st = jsonObject.getString("author");
-                                // stをListViewに追加する
-                                map.put("author", st);
                             }
+                            if (jsonObject.has("author")) {
+                                if (!jsonObject.isNull("author")) {
+                                    String st = jsonObject.getString("author");
+                                    // 著者を追加
+                                    map.put("author", st);
+                                }
 
-                        }
-                        if (jsonObject.has("genre")) {
-                            if (!jsonObject.isNull("genre")) {
-                                String st = jsonObject.getString("genre");
-                                // stをListViewに追加する
-                                map.put("title", st);
                             }
+                            if (jsonObject.has("genre")) {
+                                if (!jsonObject.isNull("genre")) {
+                                    String st = jsonObject.getString("genre");
+                                    // ジャンルを追加
+                                    map.put("genre", st);
+                                }
 
-                        }
-                        if (jsonObject.has("release_data")) {
-                            if (!jsonObject.isNull("release_data")) {
-                                String st = jsonObject.getString("release_data");
-                                // stをListViewに追加する
-                                map.put("release_data", st);
                             }
+                            if (jsonObject.has("release_data")) {
+                                if (!jsonObject.isNull("release_data")) {
+                                    String st = jsonObject.getString("release_data");
+                                    // 発行日を追加
+                                    map.put("release_data", st);
+                                }
 
-                        }
-                        if (jsonObject.has("c_code")) {
-                            if (!jsonObject.isNull("c_code")) {
-                                String st = jsonObject.getString("c_code");
-                                // stをListViewに追加する
-                                map.put("c_code", st);
                             }
+                            if (jsonObject.has("c_code")) {
+                                if (!jsonObject.isNull("c_code")) {
+                                    String st = jsonObject.getString("c_code");
+                                    // c_codeを追加
+                                    map.put("c_code", st);
+                                }
 
+                            }
+                            book.add(map);
                         }
-                        book.add(map);
                     }
                     adapter = new SimpleAdapter(getApplicationContext(), book, R.layout.search_adapter,
                             new String[]{"title", "author", "genre"}, new int[]{R.id.textView1, R.id.textView2, R.id.textView3});
@@ -198,21 +200,21 @@ public class SearchScreen extends AppCompatActivity implements SearchView.OnQuer
                     asyncJsonLoader.execute(params);
                 } else if (checkedId == R.id.radioButton2) {
                     //タイトル検索
-                    params = "?title= " + queryText;
+                    params = "?title=" + queryText;
                     thisActivity = this;
                     AsyncJsonLoader asyncJsonLoader = new AsyncJsonLoader(thisActivity);
                     asyncJsonLoader.setListener(createListener());
                     asyncJsonLoader.execute(params);
                 } else if (checkedId == R.id.radioButton3) {
                     //著者検索
-                    params = "?author= " + queryText;
+                    params = "?author=" + queryText;
                     thisActivity = this;
                     AsyncJsonLoader asyncJsonLoader = new AsyncJsonLoader(thisActivity);
                     asyncJsonLoader.setListener(createListener());
                     asyncJsonLoader.execute(params);
                 } else if (checkedId == R.id.radioButton4) {
                     //ジャンル検索
-                    params = "?genre= " + queryText;
+                    params = "?genre=" + queryText;
                     thisActivity = this;
                     AsyncJsonLoader asyncJsonLoader = new AsyncJsonLoader(thisActivity);
                     asyncJsonLoader.setListener(createListener());
