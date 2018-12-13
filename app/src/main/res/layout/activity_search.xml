@@ -4,11 +4,12 @@
     android:layout_height="fill_parent">
 
     <SearchView
-        android:id="@+id/searchView1"
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -18,17 +19,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="タイトル" />
+            android:text="ALL" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="著者" />
+            android:text="タイトル" />
 
         <RadioButton
             android:id="@+id/radioButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="著者" />
+        <RadioButton
+            android:id="@+id/radioButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -36,7 +43,7 @@
     </RadioGroup>
 
     <ListView
-        android:id = "@+id/listView1"
+        android:id = "@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
