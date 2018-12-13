@@ -1,12 +1,7 @@
 <resources>
     <string name="app_name">LibraryApp</string>
-    <string name="title">タイトル</string> //変
-    <string name="author">著者名</string> //変
     <string name="genre">ジャンル</string>
-    <string name="genre_con">ジャンル</string> //変
     <string name="publicationdate">出版日</string>
-    <string name="publicationdate_con">出版日</string> //変
-    <string name="publisher">出版社</string>
-    <string name="publisher_con">出版社</string> //変
+    <string name="publisher">分類コード</string>
     <string name="map_button_text">地図を表示</string>
 </resources>
