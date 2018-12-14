@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -72,19 +74,32 @@ public class SearchScreen extends AppCompatActivity implements SearchView.OnQuer
                  * タイトル、著者、発行日、ジャンル、C_codeの順に追加してほしい
                  *
                  * */
+                // 選択されたビューを取得
+                LinearLayout linear = (LinearLayout) view;
+                // LinearLayoutの中からidで目的のウィジェットを取得する
+                TextView titleText = linear.findViewById(R.id.textView1);
+                String title = titleText.getText().toString();
+                TextView authorText = linear.findViewById(R.id.textView2);
+                String author = authorText.getText().toString();
+                TextView genreText = linear.findViewById(R.id.textView3);
+                String genre = genreText.getText().toString();
+                TextView release_dataText = linear.findViewById(R.id.textView4);
+                String release_data = release_dataText.getText().toString();
+                TextView c_codeText = linear.findViewById(R.id.textView5);
+                String c_code = c_codeText.getText().toString();
                 // 本の情報を追加する処理
-                //ArrayList<String> infoArray = new ArrayList();
-                //infoArray.add("");
-                // infoArray.add("著者");
-                // infoArray.add("発行日");
-                // infoArray.add("ジャンル");
-                // infoArray.add("C_code");
+                ArrayList<String> infoArray = new ArrayList<String>();
+                infoArray.add(title);
+                infoArray.add(author);
+                infoArray.add(release_data);
+                infoArray.add(genre);
+                infoArray.add(c_code);
                 // 遷移先のactivityを指定してintentを作成
-                //Intent intent = new Intent( this, ScreenResult.class );
+                Intent intent = new Intent( getApplication(), SearchResult.class );
                 // intentへ添え字付で値を保持させる
-                // intent.putExtra( "info", infoArray );
+                intent.putExtra( "info", infoArray );
                 // 指定のActivityを開始する
-                // startActivity( intent );
+                startActivity( intent );
             }
         });
     }
@@ -152,7 +167,7 @@ public class SearchScreen extends AppCompatActivity implements SearchView.OnQuer
                         }
                     }
                     adapter = new SimpleAdapter(getApplicationContext(), book, R.layout.search_adapter,
-                            new String[]{"title", "author", "genre"}, new int[]{R.id.textView1, R.id.textView2, R.id.textView3});
+                            new String[]{"title", "author", "genre", "release_data", "c_code" }, new int[]{R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4, R.id.textView5});
                     listView.setAdapter(adapter);
                 }catch (JSONException e){
                     e.printStackTrace();
